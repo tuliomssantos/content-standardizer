@@ -1,7 +1,11 @@
 import { ServiceError } from '../error'
-import { ComponentDataType } from '../types'
+import { ComponentDataType, CosmicContentRequest } from '../types'
 import { Either } from '../utils'
 
 export interface IComponentsRepository {
-	getComponent(id: string): Promise<Either<ServiceError, ComponentDataType>>
+  getComponent({
+    id,
+    bucket,
+    readKey,
+  }: CosmicContentRequest): Promise<Either<ServiceError, ComponentDataType>>
 }

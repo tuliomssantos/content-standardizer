@@ -1,17 +1,21 @@
-import { CosmicService } from "./services";
-import { GetComponent } from "./usecase";
+import { CosmicService } from './services'
+import { CosmicContentRequest } from './types'
+import { GetComponent } from './usecase'
 
-export const getComponentFromCosmic = async (id: string) => {
-  
-    const cosmicRepository = new CosmicService()
+export const getContentFromCosmic = async ({
+  id,
+  bucket,
+  readKey,
+}: CosmicContentRequest) => {
+  const cosmicRepository = new CosmicService()
 
-    const getComponent = new GetComponent(cosmicRepository)
+  const getComponent = new GetComponent(cosmicRepository)
 
-    const componentOrError = await getComponent.execute(id)
-  
-    if(componentOrError.isLeft()){
-      throw new Error(componentOrError.value.message);
-    }
+  const componentOrError = await getComponent.execute({ id, bucket, readKey })
 
-    return componentOrError.value
-};
+  if (componentOrError.isLeft()) {
+    throw new Error(componentOrError.value.message)
+  }
+
+  return componentOrError.value
+}

@@ -1,6 +1,6 @@
 export class InvalidComponentStructure extends Error {
-	constructor() {
-		super(`Invalid component structure`)
-		this.name = 'InvalidComponentStructure'
-	}
+  constructor() {
+    super(`Invalid component structure`)
+    this.name = 'InvalidComponentStructure'
+  }
 }

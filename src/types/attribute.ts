@@ -1,3 +1,3 @@
 export type AttributeType = {
-	[key: string]: unknown
+  [key: string]: unknown
 }
