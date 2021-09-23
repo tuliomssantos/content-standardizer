@@ -17,5 +17,5 @@ export const getContentFromCosmic = async ({
     throw new Error(componentOrError.value.message)
   }
 
-  return componentOrError.value
+  return JSON.parse(JSON.stringify(componentOrError.value))
 }
